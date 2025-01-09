@@ -1,0 +1,21 @@
+// ********* Password Hashing ***************
+
+
+function setPassword($password)
+  {
+
+    $password_salt = generateRandomSalt();
+    $password = sha1($password . $password_salt);
+  }
+
+   function generateRandomSalt()
+  {
+    return openssl_random_pseudo_bytes(16);
+  }
+
+
+function checkPassword($password,$password_salt)
+  {
+    $hashed = sha1($password . $password_salt);
+    return ($hashed);
+  }
